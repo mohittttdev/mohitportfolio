@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mohit Sharma — Full Stack Developer building modern MERN, PHP and Laravel web applications with clean UI and scalable backend systems.">
+    <meta name="theme-color" content="#0a0a0f">
+    <meta property="og:title" content="Mohit Sharma | Full Stack Developer">
+    <meta property="og:description" content="Full Stack Developer specializing in React, Node.js, PHP and Laravel.">
+    <meta property="og:type" content="website">
+
+    <title>Mohit Sharma | Full Stack Developer</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet" href="src/styles.css">
+
+</head>
+
+<body>
+
+     <!-- ================= SCROLL PROGRESS ================= -->
+    <div class="scroll-progress">
+        <div class="scroll-bar" id="scrollBar"></div>
+    </div>
+
+   
+    <!-- ================= NAVBAR ================= -->
+    <header class="header" id="header">
+        <nav class="navbar">
+            <a href="#" class="logo">
+                <div class="logo-icon">M</div>
+                <div class="logo-text">
+                    <h2>Mohit</h2>
+                    <span>Full Stack Developer</span>
+                </div>
+            </a>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <div class="nav-right">
+                <button class="theme-btn" id="themeBtn" aria-label="Toggle dark and light mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <a href="#contact" class="hire-btn">Hire Me</a>
+                <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+
+        <div class="hero-left" data-reveal>
+            <div class="hero-badge">
+                <span class="dot"></span>
+                Available For Work
+            </div>
+
+            <h3>👋 Hello, I'm</h3>
+            <h1>Mohit <span class="accent-text">Sharma</span></h1>
+            <h2>Full Stack Developer</h2>
+
+            <p>
+                I build modern, responsive and scalable web applications using
+                React, Node.js, Express, MongoDB, PHP, Laravel and MySQL.
+                Passionate about creating premium UI and high-performance backend systems.
+            </p>
+
+            <div class="tech-stack">
+                <span>React</span>
+                <span>Node.js</span>
+                <span>Express</span>
+                <span>MongoDB</span>
+                <span>PHP</span>
+                <span>Laravel</span>
+                <span>MySQL</span>
+                <span>Tailwind</span>
+            </div>
+
+            <div class="hero-buttons">
+                <a href="#projects" class="btn-primary">View Projects</a>
+                <a href="assets/resume/Mohit-Sharma-Resume.pdf" class="btn-secondary" download>Download Resume</a>
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat-card"><h2 data-count="10">0</h2><p>Projects</p></div>
+                <div class="stat-card"><h2 data-count="1">0</h2><p>Years</p></div>
+                <div class="stat-card"><h2 data-count="5">0</h2><p>Clients</p></div>
+                <div class="stat-card"><h2 data-count="100">0</h2><p>Responsive</p></div>
+            </div>
+
+            <div class="hero-social">
+                <a href="https://github.com/mohittttdev" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+
+        <div class="hero-right" data-reveal>
+            <div class="image-wrapper">
+                <img src="assets/images/profile.png" alt="Portrait of Mohit Sharma, Full Stack Developer" loading="eager">
+
+                <div class="floating-card top-left"><i class="fab fa-react"></i> React.js</div>
+                <div class="floating-card top-right"><i class="fab fa-node-js"></i> Node.js</div>
+                <div class="floating-card bottom-left"><i class="fab fa-php"></i> PHP</div>
+                <div class="floating-card bottom-right"><i class="fas fa-database"></i> MySQL</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="scroll-down">
+        <span>Scroll Down</span>
+        <i class="fa-solid fa-angles-down"></i>
+    </div>
+
+    <!-- ================= TRUSTED ================= -->
+    <section class="trusted">
+        <div class="section-title" data-reveal>
+            <span>Trusted Technologies</span>
+            <h2>Technologies I Love Working With</h2>
+            <p>Building modern, scalable and user-friendly applications using the latest technologies.</p>
+        </div>
+
+        <div class="trusted-grid" data-reveal>
+            <div class="trusted-card"><i class="fa-brands fa-react"></i><span>React</span></div>
+            <div class="trusted-card"><i class="fa-brands fa-node-js"></i><span>Node.js</span></div>
+            <div class="trusted-card"><i class="fa-brands fa-laravel"></i><span>Laravel</span></div>
+            <div class="trusted-card"><i class="fa-brands fa-php"></i><span>PHP</span></div>
+            <div class="trusted-card"><i class="fa-solid fa-database"></i><span>MySQL</span></div>
+            <div class="trusted-card"><i class="fa-solid fa-leaf"></i><span>MongoDB</span></div>
+        </div>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section class="about" id="about">
+
+        <div class="about-left" data-reveal>
+            <div class="about-image">
+                <img src="assets/images/about.png" alt="Mohit Sharma working at a desk" loading="lazy">
+                <div class="experience-card">
+                    <h2>1+</h2>
+                    <span>Years Experience</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="about-right" data-reveal>
+            <span class="section-tag">About Me</span>
+            <h2>Passionate Full Stack Developer</h2>
+
+            <p>
+                I'm Mohit Sharma, a passionate Full Stack Developer specializing
+                in MERN Stack, PHP and Laravel. I enjoy creating modern,
+                responsive and scalable web applications with clean UI,
+                optimized backend and great user experience.
+            </p>
+
+            <p>
+                My goal is to build real-world products that solve problems,
+                improve user experience and help businesses grow digitally.
+            </p>
+
+            <div class="personal-info">
+                <div class="info-box"><strong>Name</strong><span>Mohit Sharma</span></div>
+                <div class="info-box"><strong>Email</strong><span>mohitttt009@gmail.com</span></div>
+                <div class="info-box"><strong>Location</strong><span>New Delhi, India</span></div>
+                <div class="info-box"><strong>Experience</strong><span>1+ Years</span></div>
+                <div class="info-box"><strong>Freelance</strong><span>Available</span></div>
+                <div class="info-box"><strong>Languages</strong><span>Hindi, English</span></div>
+            </div>
+
+            <div class="timeline-mini">
+                <div class="timeline-item">
+                    <span>2024</span>
+                    <h4>Started Web Development</h4>
+                    <p>Started learning HTML, CSS and JavaScript.</p>
+                </div>
+                <div class="timeline-item">
+                    <span>2025</span>
+                    <h4>Backend Development</h4>
+                    <p>Worked with PHP, MySQL and Laravel.</p>
+                </div>
+                <div class="timeline-item">
+                    <span>2026</span>
+                    <h4>Full Stack Developer</h4>
+                    <p>Building MERN Stack applications and business solutions.</p>
+                </div>
+            </div>
+
+            <div class="about-buttons">
+                <a href="assets/resume/Mohit-Sharma-Resume.pdf" class="btn-primary" download>Download Resume</a>
+                <a href="#contact" class="btn-secondary">Hire Me</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SERVICES ================= -->
+    <section class="services" id="services">
+        <div class="section-header" data-reveal>
+            <span class="section-tag">My Services</span>
+            <h2>What Can I Do For You?</h2>
+            <p>I create modern, scalable and high-performance web applications with clean UI, secure backend and excellent user experience.</p>
+        </div>
+
+        <div class="services-grid">
+
+            <article class="service-card" data-reveal>
+                <div class="service-icon"><i class="fa-solid fa-code"></i></div>
+                <h3>Frontend Development</h3>
+                <p>Responsive, fast and beautiful user interfaces using HTML, CSS, JavaScript, React and Tailwind CSS.</p>
+                <ul>
+                    <li>Responsive Design</li>
+                    <li>React Applications</li>
+                    <li>Landing Pages</li>
+                    <li>Dashboard UI</li>
+                </ul>
+                <a href="#contact">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+            </article>
+
+            <article class="service-card" data-reveal>
+                <div class="service-icon"><i class="fa-solid fa-server"></i></div>
+                <h3>Backend Development</h3>
+                <p>Secure backend systems using Node.js, Express.js, PHP and Laravel.</p>
+                <ul>
+                    <li>REST API</li>
+                    <li>Authentication</li>
+                    <li>CRUD System</li>
+                    <li>Database Design</li>
+                </ul>
+                <a href="#contact">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+            </article>
+
+            <article class="service-card" data-reveal>
+                <div class="service-icon"><i class="fa-solid fa-database"></i></div>
+                <h3>Database Design</h3>
+                <p>Design scalable databases using MySQL and MongoDB.</p>
+                <ul>
+                    <li>MySQL</li>
+                    <li>MongoDB</li>
+                    <li>Optimization</li>
+                    <li>Relationships</li>
+                </ul>
+                <a href="#contact">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+            </article>
+
+            <article class="service-card" data-reveal>
+                <div class="service-icon"><i class="fa-solid fa-cart-shopping"></i></div>
+                <h3>E-Commerce Solutions</h3>
+                <p>Complete online stores with authentication, payments and admin panel.</p>
+                <ul>
+                    <li>Shopping Cart</li>
+                    <li>Payment Gateway</li>
+                    <li>Admin Dashboard</li>
+                    <li>Order Management</li>
+                </ul>
+                <a href="#contact">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+            </article>
+
+            <article class="service-card" data-reveal>
+                <div class="service-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                <h3>Responsive Websites</h3>
+                <p>Websites optimized for mobile, tablet and desktop devices.</p>
+                <ul>
+                    <li>Mobile First</li>
+                    <li>Fast Loading</li>
+                    <li>SEO Ready</li>
+                    <li>Accessibility</li>
+                </ul>
+                <a href="#contact">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+            </article>
+
+            <article class="service-card" data-reveal>
+                <div class="service-icon"><i class="fa-solid fa-rocket"></i></div>
+                <h3>Deployment</h3>
+                <p>Deploy applications with optimized performance and security.</p>
+                <ul>
+                    <li>Domain Setup</li>
+                    <li>Hosting</li>
+                    <li>SSL</li>
+                    <li>Maintenance</li>
+                </ul>
+                <a href="#contact">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- ================= PROCESS ================= -->
+    <section class="process">
+        <div class="section-header" data-reveal>
+            <span class="section-tag">Work Process</span>
+            <h2>How I Build Projects</h2>
+        </div>
+
+        <div class="process-grid">
+            <div class="process-card" data-reveal>
+                <span>01</span>
+                <i class="fa-solid fa-lightbulb"></i>
+                <h3>Planning</h3>
+                <p>Understanding project requirements and creating a strategy.</p>
+            </div>
+            <div class="process-card" data-reveal>
+                <span>02</span>
+                <i class="fa-solid fa-pen-ruler"></i>
+                <h3>Design</h3>
+                <p>Designing clean, modern and user-friendly interfaces.</p>
+            </div>
+            <div class="process-card" data-reveal>
+                <span>03</span>
+                <i class="fa-solid fa-code"></i>
+                <h3>Development</h3>
+                <p>Writing scalable and maintainable code.</p>
+            </div>
+            <div class="process-card" data-reveal>
+                <span>04</span>
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+                <h3>Deployment</h3>
+                <p>Testing, deployment and long-term support.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= CTA ================= -->
+    <section class="cta">
+        <div class="cta-content" data-reveal>
+            <h2>Have an Idea?</h2>
+            <p>Let's build something amazing together. I'm available for freelance projects, internships and full-time opportunities.</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn-primary">Start a Project</a>
+                <a href="assets/resume/Mohit-Sharma-Resume.pdf" class="btn-secondary" download>Download Resume</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= PROJECTS ================= -->
+    <section class="projects" id="projects">
+        <div class="section-header" data-reveal>
+            <span class="section-tag">Portfolio</span>
+            <h2>Featured Projects</h2>
+            <p>A collection of real-world projects showcasing my expertise in Full Stack Development, MERN Stack, PHP, Laravel and UI Design.</p>
+        </div>
+
+        <div class="project-filter" data-reveal>
+            <button class="active" data-filter="all">All</button>
+            <button data-filter="mern">MERN</button>
+            <button data-filter="react">React</button>
+            <button data-filter="php">PHP</button>
+            <button data-filter="laravel">Laravel</button>
+            <button data-filter="javascript">JavaScript</button>
+        </div>
+
+        <div class="projects-grid">
+
+            <article class="project-card featured" data-reveal data-category="php javascript">
+                <span class="featured-badge">⭐ Featured</span>
+                <div class="project-image">
+                    <img src="assets/projects/vitalness.jpg" alt="Vitalness Fitness platform homepage" loading="lazy">
+                </div>
+                <div class="project-content">
+                    <h3>Vitalness Fitness</h3>
+                    <p>Modern fitness platform with BMI calculator, workout plans, nutrition guide, dark mode and responsive UI.</p>
+                    <div class="tech-stack">
+                        <span>HTML</span><span>CSS</span><span>JavaScript</span><span>PHP</span><span>MySQL</span>
+                    </div>
+                    <div class="project-info">
+                        <span><i class="fa-solid fa-user"></i> Full Stack</span>
+                        <span><i class="fa-solid fa-calendar"></i> 2026</span>
+                    </div>
+                    <div class="project-buttons">
+                        <a href="#">Live Demo</a>
+                        <a href="#">GitHub</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="project-card" data-reveal data-category="php">
+                <div class="project-image">
+                    <img src="assets/projects/bms.jpg" alt="Business Management System dashboard" loading="lazy">
+                </div>
+                <div class="project-content">
+                    <h3>Business Management System</h3>
+                    <p>Complete inventory, sales, supplier and customer management dashboard.</p>
+                    <div class="tech-stack">
+                        <span>PHP</span><span>MySQL</span><span>Bootstrap</span>
+                    </div>
+                    <div class="project-info">
+                        <span><i class="fa-solid fa-database"></i> Admin Panel</span>
+                        <span><i class="fa-solid fa-calendar"></i> 2026</span>
+                    </div>
+                    <div class="project-buttons">
+                        <a href="#">Live Demo</a>
+                        <a href="#">GitHub</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="project-card" data-reveal data-category="react javascript">
+                <div class="project-image">
+                    <img src="assets/projects/weather.jpg" alt="Cloudy Weather App interface" loading="lazy">
+                </div>
+                <div class="project-content">
+                    <h3>Cloudy Weather App</h3>
+                    <p>Real-time weather application using API integration with beautiful UI and forecast system.</p>
+                    <div class="tech-stack">
+                        <span>React</span><span>API</span><span>CSS</span>
+                    </div>
+                    <div class="project-info">
+                        <span><i class="fa-solid fa-cloud"></i> API</span>
+                        <span><i class="fa-solid fa-calendar"></i> 2026</span>
+                    </div>
+                    <div class="project-buttons">
+                        <a href="#">Live Demo</a>
+                        <a href="#">GitHub</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="project-card" data-reveal data-category="php javascript">
+                <div class="project-image">
+                    <img src="assets/projects/job.jpg" alt="Job Portal listing page" loading="lazy">
+                </div>
+                <div class="project-content">
+                    <h3>Job Portal</h3>
+                    <p>Recruitment platform with authentication, employer dashboard, job posting, applications and admin panel.</p>
+                    <div class="tech-stack">
+                        <span>PHP</span><span>MySQL</span><span>JavaScript</span>
+                    </div>
+                    <div class="project-info">
+                        <span><i class="fa-solid fa-briefcase"></i> Portal</span>
+                        <span><i class="fa-solid fa-calendar"></i> 2026</span>
+                    </div>
+                    <div class="project-buttons">
+                        <a href="#">Live Demo</a>
+                        <a href="#">GitHub</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="project-card" data-reveal data-category="laravel">
+                <div class="project-image">
+                    <img src="assets/projects/estate.jpg" alt="Real Estate listing website" loading="lazy">
+                </div>
+                <div class="project-content">
+                    <h3>Real Estate Website</h3>
+                    <p>Property listing platform with property search, inquiry system and admin dashboard.</p>
+                    <div class="tech-stack">
+                        <span>Laravel</span><span>MySQL</span><span>Bootstrap</span>
+                    </div>
+                    <div class="project-info">
+                        <span><i class="fa-solid fa-house"></i> Property</span>
+                        <span><i class="fa-solid fa-calendar"></i> 2026</span>
+                    </div>
+                    <div class="project-buttons">
+                        <a href="#">Live Demo</a>
+                        <a href="#">GitHub</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="project-card" data-reveal data-category="javascript">
+                <div class="shine"></div>
+                <div class="project-image">
+                    <img src="assets/projects/portfolio.jpg" alt="Personal Portfolio landing page" loading="lazy">
+                </div>
+                <div class="project-content">
+                    <h3>Personal Portfolio</h3>
+                    <p>Modern developer portfolio with premium UI, animations, responsive layout and dark mode.</p>
+                    <div class="tech-stack">
+                        <span>HTML</span><span>CSS</span><span>JavaScript</span>
+                    </div>
+                    <div class="project-info">
+                        <span><i class="fa-solid fa-code"></i> Portfolio</span>
+                        <span><i class="fa-solid fa-calendar"></i> 2026</span>
+                    </div>
+                    <div class="project-buttons">
+                        <a href="#">Live Demo</a>
+                        <a href="#">GitHub</a>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- ================= SKILLS ================= -->
+    <section class="skills" id="skills">
+        <div class="section-header" data-reveal>
+            <span class="section-tag">My Skills</span>
+            <h2>Technologies & Tools</h2>
+            <p>I build modern web applications using the latest frontend, backend and database technologies.</p>
+        </div>
+
+        <div class="skills-container">
+
+            <div class="skill-category" data-reveal>
+                <h3><i class="fa-solid fa-laptop-code"></i> Frontend</h3>
+                <div class="skill-item"><span>HTML5</span><div class="progress"><div class="progress-bar" data-width="95%">95%</div></div></div>
+                <div class="skill-item"><span>CSS3</span><div class="progress"><div class="progress-bar" data-width="92%">92%</div></div></div>
+                <div class="skill-item"><span>JavaScript</span><div class="progress"><div class="progress-bar" data-width="90%">90%</div></div></div>
+                <div class="skill-item"><span>React.js</span><div class="progress"><div class="progress-bar" data-width="88%">88%</div></div></div>
+            </div>
+
+            <div class="skill-category" data-reveal>
+                <h3><i class="fa-solid fa-server"></i> Backend</h3>
+                <div class="skill-item"><span>Node.js</span><div class="progress"><div class="progress-bar" data-width="85%">85%</div></div></div>
+                <div class="skill-item"><span>Express.js</span><div class="progress"><div class="progress-bar" data-width="84%">84%</div></div></div>
+                <div class="skill-item"><span>PHP</span><div class="progress"><div class="progress-bar" data-width="90%">90%</div></div></div>
+                <div class="skill-item"><span>Laravel</span><div class="progress"><div class="progress-bar" data-width="86%">86%</div></div></div>
+            </div>
+
+            <div class="skill-category" data-reveal>
+                <h3><i class="fa-solid fa-database"></i> Database</h3>
+                <div class="skill-item"><span>MySQL</span><div class="progress"><div class="progress-bar" data-width="90%">90%</div></div></div>
+                <div class="skill-item"><span>MongoDB</span><div class="progress"><div class="progress-bar" data-width="82%">82%</div></div></div>
+            </div>
+
+        </div>
+
+        <div class="tech-icons" data-reveal>
+            <div class="tech-card"><i class="fa-brands fa-html5"></i><span>HTML</span></div>
+            <div class="tech-card"><i class="fa-brands fa-css3-alt"></i><span>CSS</span></div>
+            <div class="tech-card"><i class="fa-brands fa-js"></i><span>JavaScript</span></div>
+            <div class="tech-card"><i class="fa-brands fa-react"></i><span>React</span></div>
+            <div class="tech-card"><i class="fa-brands fa-node-js"></i><span>Node</span></div>
+            <div class="tech-card"><i class="fa-brands fa-php"></i><span>PHP</span></div>
+            <div class="tech-card"><i class="fa-brands fa-laravel"></i><span>Laravel</span></div>
+            <div class="tech-card"><i class="fa-solid fa-database"></i><span>MySQL</span></div>
+            <div class="tech-card"><i class="fa-solid fa-leaf"></i><span>MongoDB</span></div>
+            <div class="tech-card"><i class="fa-brands fa-git-alt"></i><span>Git</span></div>
+            <div class="tech-card"><i class="fa-brands fa-github"></i><span>GitHub</span></div>
+            <div class="tech-card"><i class="fa-solid fa-wind"></i><span>Tailwind</span></div>
+        </div>
+    </section>
+
+    <!-- ================= EXPERIENCE ================= -->
+    <section class="experience" id="experience">
+        <div class="section-header" data-reveal>
+            <span class="section-tag">Experience</span>
+            <h2>My Journey</h2>
+        </div>
+
+        <div class="timeline">
+            <article class="timeline-card" data-reveal>
+                <span class="year">2024</span>
+                <h3>Started Web Development</h3>
+                <p>Learned HTML, CSS, JavaScript and responsive web design.</p>
+            </article>
+            <article class="timeline-card" data-reveal>
+                <span class="year">2025</span>
+                <h3>Backend Development</h3>
+                <p>Built CRUD applications using PHP, Laravel and MySQL.</p>
+            </article>
+            <article class="timeline-card" data-reveal>
+                <span class="year">2026</span>
+                <h3>Full Stack Developer</h3>
+                <p>Developed MERN Stack, Business Management System, Job Portal and Real Estate projects.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="professional">
+        <div class="section-header" data-reveal>
+            <span class="section-tag">Professional Experience</span>
+            <h2>My Development Journey</h2>
+        </div>
+
+        <div class="experience-grid">
+            <article class="experience-card" data-reveal>
+                <div class="experience-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                <h3>Freelance Full Stack Developer</h3>
+                <span>2025 - Present</span>
+                <p>Building responsive websites, admin panels, business applications, dashboards, REST APIs, and full-stack web applications.</p>
+            </article>
+            <article class="experience-card" data-reveal>
+                <div class="experience-icon"><i class="fa-solid fa-briefcase"></i></div>
+                <h3>Personal Projects</h3>
+                <span>10+ Projects</span>
+                <p>Developed Business Management System, Job Portal, Weather App, Real Estate, E-Commerce, Portfolio, and Fitness Platform.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- ================= LANGUAGES ================= -->
+    <section class="languages">
+        <div class="section-header" data-reveal>
+            <span class="section-tag">Languages</span>
+            <h2>Communication Skills</h2>
+        </div>
+        <div class="language-grid">
+            <div class="language-card" data-reveal><h3>Hindi</h3><span>Native</span></div>
+            <div class="language-card" data-reveal><h3>English</h3><span>Professional</span></div>
+        </div>
+    </section>
+
+    <!-- ================= INTERESTS ================= -->
+    <section class="interests">
+        <div class="section-header" data-reveal>
+            <span class="section-tag">Interests</span>
+            <h2>Beyond Coding</h2>
+        </div>
+        <div class="interest-grid">
+            <div class="interest-card" data-reveal><i class="fa-solid fa-code"></i> Coding</div>
+            <div class="interest-card" data-reveal><i class="fa-solid fa-laptop"></i> Open Source</div>
+            <div class="interest-card" data-reveal><i class="fa-solid fa-book"></i> Learning</div>
+            <div class="interest-card" data-reveal><i class="fa-solid fa-dumbbell"></i> Fitness</div>
+            <div class="interest-card" data-reveal><i class="fa-solid fa-lightbulb"></i> Innovation</div>
+            <div class="interest-card" data-reveal><i class="fa-solid fa-rocket"></i> Startups</div>
+        </div>
+    </section>
+
+    <!-- ================= ACHIEVEMENTS ================= -->
+    <section class="achievements">
+        <div class="section-header" data-reveal>
+            <span class="section-tag">Highlights</span>
+            <h2>Career Achievements</h2>
+        </div>
+        <div class="achievement-grid">
+            <div class="achievement-card" data-reveal>
+                <div class="shine"></div>
+                <i class="fa-solid fa-folder-open"></i>
+                <h3 data-count="10">0+</h3>
+                <span>Projects Completed</span>
+            </div>
+            <div class="achievement-card" data-reveal>
+                <div class="shine"></div>
+                <i class="fa-solid fa-code-branch"></i>
+                <h3 data-count="20">0+</h3>
+                <span>GitHub Repositories</span>
+            </div>
+            <div class="achievement-card" data-reveal>
+                <div class="shine"></div>
+                <i class="fa-solid fa-users"></i>
+                <h3 data-count="5">0+</h3>
+                <span>Happy Clients</span>
+            </div>
+            <div class="achievement-card" data-reveal>
+                <div class="shine"></div>
+                <i class="fa-solid fa-award"></i>
+                <h3 data-count="100">0%</h3>
+                <span>Responsive Projects</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= TESTIMONIALS ================= -->
+    <section class="testimonials" id="testimonials">
+        <div class="section-header" data-reveal>
+            <span class="section-tag">Testimonials</span>
+            <h2>What Clients Say</h2>
+            <p>Feedback from clients and collaborators who have worked with me.</p>
+        </div>
+
+        <div class="testimonial-grid">
+            <article class="testimonial-card" data-reveal>
+                <div class="client-info">
+                    <div class="client-avatar">RS</div>
+                    <div>
+                        <h3>Rahul Sharma</h3>
+                        <span>Business Owner</span>
+                    </div>
+                </div>
+                <div class="rating">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p>Mohit delivered the project before deadline. Clean code, responsive design and great communication.</p>
+            </article>
+
+            <article class="testimonial-card" data-reveal>
+                <div class="client-info">
+                    <div class="client-avatar">PG</div>
+                    <div>
+                        <h3>Priya Gupta</h3>
+                        <span>Startup Founder</span>
+                    </div>
+                </div>
+                <div class="rating">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p>Professional developer with modern UI skills. Highly recommended for full-stack development.</p>
+            </article>
+
+            <article class="testimonial-card" data-reveal>
+                <div class="client-info">
+                    <div class="client-avatar">AV</div>
+                    <div>
+                        <h3>Amit Verma</h3>
+                        <span>Freelance Client</span>
+                    </div>
+                </div>
+                <div class="rating">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p>Amazing experience working together. Delivered exactly what was promised.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- ================= FAQ ================= -->
+    <section class="faq" id="faq">
+        <div class="section-header" data-reveal>
+            <span class="section-tag">FAQ</span>
+            <h2>Frequently Asked Questions</h2>
+        </div>
+
+        <div class="faq-container" data-reveal>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    What services do you provide?
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>I build responsive websites, MERN applications, PHP & Laravel projects, admin panels, REST APIs, and custom web applications.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    Are you available for freelance work?
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Yes. I'm available for freelance, internships and full-time opportunities.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    Which technologies do you use?
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>React, Node.js, Express, MongoDB, PHP, Laravel, MySQL, JavaScript, Tailwind CSS.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    How can I contact you?
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>You can contact me via Email, WhatsApp, LinkedIn, or the contact form below.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section class="contact" id="contact">
+        <div class="section-header" data-reveal>
+            <span class="section-tag">Contact Me</span>
+            <h2>Let's Work Together</h2>
+            <p>Have a project in mind or looking for a Full Stack Developer? Feel free to reach out. I'll get back to you as soon as possible.</p>
+        </div>
+
+        <div class="contact-wrapper">
+
+            <div class="contact-left" data-reveal>
+                <div class="contact-card">
+                    <i class="fa-solid fa-envelope"></i>
+                    <div><h3>Email</h3><p>mohitttt009@gmail.com</p></div>
+                </div>
+                <div class="contact-card">
+                    <i class="fa-solid fa-phone"></i>
+                    <div><h3>Phone</h3><p>+91 9319043644</p></div>
+                </div>
+                <div class="contact-card">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div><h3>Location</h3><p>New Delhi, India</p></div>
+                </div>
+                <div class="contact-card">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <div><h3>Availability</h3><p>Open to Work</p></div>
+                </div>
+            </div>
+
+            <div class="contact-right" data-reveal>
+                <!-- NOTE: replace action="#" with your Formspree endpoint (https://formspree.io) to make this form actually send email -->
+                <form action="#" method="POST" id="contactForm">
+                    <div class="input-group">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" name="subject" placeholder="Subject" required>
+                    </div>
+                    <div class="input-group">
+                        <textarea rows="6" name="message" placeholder="Write your message..." required></textarea>
+                    </div>
+                    <button type="submit" class="contact-btn">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        Send Message
+                    </button>
+                    <p class="form-status" id="formStatus"></p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= NEWSLETTER ================= -->
+    <section class="newsletter">
+        <div class="newsletter-box" data-reveal>
+            <span>🚀 Stay Connected</span>
+            <h2>Subscribe For Updates</h2>
+            <p>Get notified about my latest projects, blogs and web development updates.</p>
+            <form class="newsletter-form" id="newsletterForm">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+        <div class="footer-container">
+
+            <div class="footer-col">
+                <a href="#" class="footer-logo">
+                    <span>M</span>
+                    Mohit Sharma
+                </a>
+                <p>Passionate Full Stack Developer specializing in MERN Stack, PHP, Laravel and modern web technologies. Building fast, responsive and scalable web applications.</p>
+                <div class="footer-social">
+                    <a href="https://github.com/mohittttdev" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.behance.net/mohitsharma589" target="_blank" rel="noopener" aria-label="Behance"><i class="fab fa-behance"></i></a>
+                    <a href="https://mohitdev.site.je/" target="_blank" rel="noopener" aria-label="Website"><i class="fas fa-globe"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h3>Navigation</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Services</h3>
+                <ul>
+                    <li>Frontend Development</li>
+                    <li>Backend Development</li>
+                    <li>MERN Stack</li>
+                    <li>PHP Development</li>
+                    <li>Laravel</li>
+                    <li>UI Design</li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> mohitttt009@gmail.com</li>
+                    <li><i class="fas fa-phone"></i> +91 9319043644</li>
+                    <li><i class="fas fa-location-dot"></i> New Delhi, India</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 Mohit Sharma. All Rights Reserved.</p>
+            <p>Designed & Developed ❤️ by Mohit Sharma</p>
+        </div>
+    </footer>
+
+    <!-- ================= BACK TO TOP ================= -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <div class="floating-tech-container">
+        <div class="floating-tech"><i class="fab fa-react"></i></div>
+        <div class="floating-tech"><i class="fab fa-node-js"></i></div>
+        <div class="floating-tech"><i class="fab fa-php"></i></div>
+        <div class="floating-tech"><i class="fas fa-database"></i></div>
+        <div class="floating-tech"><i class="fab fa-laravel"></i></div>
+        <div class="floating-tech"><i class="fab fa-js"></i></div>
+    </div>
+
+    <script src="src/script.js"></script>
+
+</body>
+
+</html>
