@@ -1454,18 +1454,8 @@ section {
     gap: 26px;
 }
 
-.professional .experience-card {
-    padding: 32px 28px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    background: var(--surface);
-    transition: transform .3s var(--ease), border-color .3s;
-}
 
-.professional .experience-card:hover {
-    transform: translateY(-6px);
-    border-color: var(--purple);
-}
+
 
 .experience-icon {
     width: 50px;
@@ -1479,21 +1469,116 @@ section {
     margin-bottom: 18px;
 }
 
-.professional .experience-card h3 {
-    font-size: 1.08rem;
-    margin-bottom: 4px;
+/* ======================================
+   PROFESSIONAL EXPERIENCE
+====================================== */
+
+.professional{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 18px;
 }
 
-.professional .experience-card span {
-    font-size: .78rem;
-    color: var(--purple-ink);
-    font-weight: 600;
+
+.professional .experience-card{
+    position:relative;
+    overflow:hidden;
+
+    padding:30px;
+    background:var(--surface);
+
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+
+    transition:
+        transform .35s var(--ease),
+        border-color .35s var(--ease),
+        box-shadow .35s var(--ease);
 }
 
-.professional .experience-card p {
-    font-size: .88rem;
-    color: var(--text-muted);
-    margin-top: 10px;
+.professional .experience-card:hover{
+    transform:translateY(-6px);
+    border-color:var(--purple);
+    box-shadow:0 15px 35px rgba(124,58,237,.12);
+}
+
+/* Corner Accent */
+
+.professional .experience-card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:70px;
+    height:3px;
+    background:var(--purple);
+}
+
+.professional .experience-card::after{
+    content:"";
+    position:absolute;
+    right:0;
+    bottom:0;
+    width:70px;
+    height:3px;
+    background:var(--purple);
+}
+
+/* Icon */
+
+.experience-icon{
+    width:56px;
+    height:56px;
+    display:grid;
+    place-items:center;
+
+    border-radius:14px;
+    background:var(--purple-glow);
+
+    color:var(--purple);
+    font-size:1.35rem;
+
+    margin-bottom:20px;
+}
+
+/* Title */
+
+.professional .experience-card h3{
+    font-size:1.08rem;
+    margin-bottom:6px;
+}
+
+/* Year */
+
+.professional .experience-card span{
+    display:inline-block;
+    margin-bottom:14px;
+
+    color:var(--purple);
+    font-size:.82rem;
+    font-weight:600;
+}
+
+/* Description */
+
+.professional .experience-card p{
+    font-size:.88rem;
+    line-height:1.8;
+    color:var(--text-muted);
+}
+
+/* Watermark */
+
+.professional .experience-card .bg-shape{
+    position:absolute;
+    right:18px;
+    bottom:12px;
+
+    font-size:70px;
+    color:var(--purple);
+
+    opacity:.05;
+    pointer-events:none;
 }
 
 /*  LANGUAGES / INTERESTS  */
