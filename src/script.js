@@ -257,19 +257,34 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /*  NEWSLETTER FORM  */
-  const newsletterForm = document.getElementById('newsletterForm');
-  if (newsletterForm) {
-    newsletterForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const input = newsletterForm.querySelector('input[type="email"]');
-      if (input && input.value) {
-        input.value = '';
-        input.placeholder = 'Subscribed! Thank you 🎉';
-        setTimeout(() => { input.placeholder = 'Enter your email'; }, 3000);
-      }
+const newsletterForm = document.getElementById('newsletterForm');
+
+newsletterForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const formData = new FormData(newsletterForm);
+
+    fetch('backend/subscribe.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+
+        const input = newsletterForm.querySelector('input[name="email"]');
+
+        if (data.trim() === "success") {
+            input.value = "";
+            input.placeholder = "Subscribed! Thank you 🎉";
+        } else if (data.trim() === "exists") {
+            input.value = "";
+            input.placeholder = "Already Subscribed!";
+        } else {
+            alert(data);
+        }
+
     });
-  }
+});
 
   /* SMOOTH SCROLL FOR "SCROLL DOWN" INDICATOR  */
   const scrollDown = document.querySelector('.scroll-down');

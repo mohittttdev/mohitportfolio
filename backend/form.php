@@ -1,40 +1,56 @@
 <?php
-include('connection.php');
+include("connection.php");
 
-if(isset($_POST['submit'])){
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $name = trim($_POST['name']);
     $email = trim($_POST['email']);
     $subject = trim($_POST['subject']);
     $message = trim($_POST['message']);
 
-    // Basic validation
-    if(empty($name) || empty($email) || empty($message)){
-        echo "All required fields must be filled";
-        exit;
+    // Validation
+    if (empty($name) || empty($email) || empty($subject) || empty($message)) {
+        die("Please fill all fields.");
     }
 
-    if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-        echo "Invalid email";
-        exit;
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        die("Invalid Email Address.");
     }
 
-    // Insert query
-    $sql = "INSERT INTO form (name, email, subject, message) VALUES (?, ?, ?, ?)";
-    $stmt = mysqli_stmt_init($connection);
+    $status = "Unread";
 
-    if(mysqli_stmt_prepare($stmt, $sql)){
+    $sql = "INSERT INTO form (name, email, subject, message, status)
+            VALUES (?, ?, ?, ?, ?)";
 
-        mysqli_stmt_bind_param($stmt, "ssss", $name, $email, $subject, $message);
+    $stmt = mysqli_prepare($connection, $sql);
 
-        if(mysqli_stmt_execute($stmt)){
+    if ($stmt) {
+
+        mysqli_stmt_bind_param(
+            $stmt,
+            "sssss",
+            $name,
+            $email,
+            $subject,
+            $message,
+            $status
+        );
+
+        if (mysqli_stmt_execute($stmt)) {
             echo "Message Sent Successfully";
         } else {
             echo "Database Error";
         }
 
+        mysqli_stmt_close($stmt);
+
+    } else {
+
+        echo "Query Failed";
+
     }
 
-    mysqli_stmt_close($stmt);
+    mysqli_close($connection);
+
 }
 ?>

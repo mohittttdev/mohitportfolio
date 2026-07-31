@@ -125,9 +125,10 @@
             <div class="hero-social">
                 <a href="https://github.com/mohittttdev" target="_blank" rel="noopener" aria-label="GitHub"><i
                         class="fab fa-github"></i></a>
-                        
-                <a href="https://www.linkedin.com/in/mohit-sharma-130b15418/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                
+
+                <a href="https://www.linkedin.com/in/mohit-sharma-130b15418/" target="_blank" rel="noopener"
+                    aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+
             </div>
         </div>
 
@@ -883,24 +884,31 @@
 
             <div class="contact-right" data-reveal>
                 <!-- NOTE: replace action="#" with your Formspree endpoint (https://formspree.io) to make this form actually send email -->
-                <form action="#" method="POST" id="contactForm">
+                <form action="backend/form.php" method="POST" id="contactForm">
+
                     <div class="input-group">
                         <input type="text" name="name" placeholder="Your Name" required>
                     </div>
+
                     <div class="input-group">
                         <input type="email" name="email" placeholder="Your Email" required>
                     </div>
+
                     <div class="input-group">
                         <input type="text" name="subject" placeholder="Subject" required>
                     </div>
+
                     <div class="input-group">
-                        <textarea rows="6" name="message" placeholder="Write your message..." required></textarea>
+                        <textarea name="message" rows="6" placeholder="Write your message..." required></textarea>
                     </div>
-                    <button type="submit" class="contact-btn">
+
+                    <button type="submit" name="submit" class="contact-btn">
                         <i class="fa-solid fa-paper-plane"></i>
                         Send Message
                     </button>
+
                     <p class="form-status" id="formStatus"></p>
+
                 </form>
             </div>
         </div>
@@ -912,8 +920,8 @@
             <span> Stay Connected</span>
             <h2>Subscribe For Updates</h2>
             <p>Get notified about my latest projects, blogs and web development updates.</p>
-            <form class="newsletter-form" id="newsletterForm">
-                <input type="email" placeholder="Enter your email" required>
+            <form class="newsletter-form" id="newsletterForm" action="backend/subscribe.php" method="POST">
+               <input type="email" name="email" placeholder="Enter your email" required>
                 <button type="submit">Subscribe</button>
             </form>
         </div>
@@ -934,7 +942,7 @@
                     <a href="https://github.com/mohittttdev" target="_blank" rel="noopener" aria-label="GitHub"><i
                             class="fab fa-github"></i></a>
                     <a href="#" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    
+
                     <a href="https://mohitdev.site.je/" target="_blank" rel="noopener" aria-label="Website"><i
                             class="fas fa-globe"></i></a>
                 </div>
@@ -977,7 +985,7 @@
 
         <div class="footer-bottom">
             <p>© 2026 Mohit Sharma. All Rights Reserved.</p>
-            <p>Designed & Developed  by Mohit Sharma</p>
+            <p>Designed & Developed by Mohit Sharma</p>
         </div>
     </footer>
 
