@@ -64,7 +64,7 @@ try {
 
         <br><br>
 
-        <p>Thanks ❤️</p>
+        <p>Thanks </p>
         <p><strong>Mohit Sharma</strong></p>
     </div>";
 

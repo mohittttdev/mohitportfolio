@@ -313,84 +313,110 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-// NEWSLETTER
+
+// NEWSLETTER SYSTEM
 
 
 const newsletterForm = document.getElementById("newsletterForm");
 const newsletterStatus = document.getElementById("newsletterStatus");
 const newsletterBtn = document.getElementById("newsletterBtn");
 
+
 let subscribed = false;
+
 
 
 if (newsletterForm) {
 
 
-    newsletterForm.addEventListener("submit", function (e) {
+    newsletterForm.addEventListener("submit", function(e){
+
 
         e.preventDefault();
 
 
         const formData = new FormData(newsletterForm);
+
         const email = formData.get("email");
 
 
-        if (!email) {
-            newsletterStatus.innerHTML = "❌ Please enter email!";
-            newsletterStatus.style.color = "red";
+
+        if(!email){
+
+            newsletterStatus.innerHTML =
+            "❌ Please enter your email.";
+
+            newsletterStatus.style.color =
+            "red";
+
             return;
+
         }
 
 
 
-       
+        
         // UNSUBSCRIBE
-       
+      
 
-        if (subscribed) {
+
+        if(subscribed){
 
 
             newsletterBtn.disabled = true;
-            newsletterBtn.innerHTML = "Unsubscribing...";
+
+            newsletterBtn.innerHTML =
+            "Unsubscribing...";
 
 
-            fetch("backend/unsubscribe.php", {
 
-                method: "POST",
+            fetch("backend/unsubscribe.php",{
 
-                headers: {
+
+                method:"POST",
+
+
+                headers:{
+
                     "Content-Type":
                     "application/x-www-form-urlencoded"
+
                 },
+
 
                 body:
                 "email=" + encodeURIComponent(email)
 
+
             })
 
 
-            .then(response => response.text())
+            .then(response=>response.text())
 
 
-            .then(data => {
+            .then(data=>{
 
 
-                if(data.trim() === "success"){
+                if(data.trim()==="success"){
 
 
                     subscribed = false;
+
 
 
                     newsletterBtn.innerHTML =
                     "Subscribe";
 
 
+
                     newsletterBtn.style.background =
                     "";
 
 
+
                     newsletterStatus.innerHTML =
                     "✅ Successfully Unsubscribed!";
+
 
 
                     newsletterStatus.style.color =
@@ -398,7 +424,6 @@ if (newsletterForm) {
 
 
                 }
-
 
                 else{
 
@@ -421,7 +446,6 @@ if (newsletterForm) {
                 newsletterStatus.innerHTML =
                 "❌ Network Error!";
 
-
                 newsletterStatus.style.color =
                 "red";
 
@@ -432,10 +456,11 @@ if (newsletterForm) {
             .finally(()=>{
 
 
-                newsletterBtn.disabled = false;
+                newsletterBtn.disabled=false;
 
 
             });
+
 
 
             return;
@@ -446,20 +471,21 @@ if (newsletterForm) {
 
 
 
-
-       
+        
         // SUBSCRIBE
         
 
 
+
         newsletterBtn.disabled = true;
+
 
         newsletterBtn.innerHTML =
         "Subscribing...";
 
 
 
-        fetch(newsletterForm.action, {
+        fetch(newsletterForm.action,{
 
 
             method:"POST",
@@ -493,14 +519,15 @@ if (newsletterForm) {
 
 
 
-                // RED BUTTON FOR UNSUBSCRIBE
+                // RED BUTTON
 
                 newsletterBtn.style.background =
                 "#ef4444";
 
 
+
                 newsletterBtn.style.color =
-                "#fff";
+                "#ffffff";
 
 
 
@@ -522,8 +549,40 @@ if (newsletterForm) {
 
 
 
-                // Email reset nahi karenge
-                // taaki unsubscribe possible rahe
+
+
+                
+                // BACKGROUND WELCOME EMAIL
+               
+
+
+                if(data==="success"){
+
+
+                    fetch(
+                    "backend/sendNewsletterMail.php",
+                    {
+
+
+                        method:"POST",
+
+
+                        headers:{
+
+                            "Content-Type":
+                            "application/x-www-form-urlencoded"
+
+                        },
+
+
+                        body:
+                        "email="+encodeURIComponent(email)
+
+
+                    });
+
+
+                }
 
 
 
@@ -532,7 +591,6 @@ if (newsletterForm) {
 
 
             else if(data==="invalid"){
-
 
 
                 newsletterStatus.innerHTML =
@@ -559,7 +617,6 @@ if (newsletterForm) {
 
 
             }
-
 
 
         })
@@ -608,82 +665,70 @@ if (newsletterForm) {
 
 
 }
+// ===============================
+// AUTO CHECK EXISTING SUBSCRIBER
+// ===============================
+
+window.addEventListener("load", ()=>{
 
 
-// CHECK SUBSCRIPTION ON PAGE LOAD
-
-const newsletterEmail =
-document.getElementById("newsletterEmail");
-
-
-if(newsletterEmail){
+    if(!newsletterBtn || !newsletterEmail){
+        return;
+    }
 
 
-newsletterEmail.addEventListener("blur",()=>{
+    fetch("backend/checkSubscriber.php")
 
 
-const email = newsletterEmail.value.trim();
+    .then(response => response.json())
 
 
-if(!email) return;
+    .then(data => {
+
+
+        if(data.status === "active"){
+
+
+            subscribed = true;
+
+
+            newsletterEmail.value =
+            data.email;
 
 
 
-fetch("backend/checkSubscription.php",{
+            newsletterBtn.innerHTML =
+            "Unsubscribe";
 
 
-method:"POST",
 
-headers:{
-"Content-Type":
-"application/x-www-form-urlencoded"
-},
-
-body:
-"email="+encodeURIComponent(email)
+            newsletterBtn.style.background =
+            "#ef4444";
 
 
-})
+
+            newsletterBtn.style.color =
+            "#ffffff";
 
 
-.then(res=>res.text())
+
+        }
 
 
-.then(status=>{
+    })
 
 
-if(status.trim()==="active"){
+    .catch(error => {
 
+        console.log(
+            "Subscriber check failed:",
+            error
+        );
 
-subscribed=true;
-
-
-newsletterBtn.innerHTML =
-"Unsubscribe";
-
-
-newsletterBtn.style.background =
-"#ef4444";
-
-
-newsletterBtn.style.color =
-"#fff";
-
-
-newsletterStatus.innerHTML =
-"";
-
-
-}
+    });
 
 
 });
-
-
-});
-
-
-}
 
   /* SMOOTH SCROLL FOR "SCROLL DOWN" INDICATOR  */
   const scrollDown = document.querySelector('.scroll-down');
