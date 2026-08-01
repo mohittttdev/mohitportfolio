@@ -2,17 +2,23 @@
 
 include('connection.php');
 
+header('Content-Type: application/json');
+
+
 
 $token = $_COOKIE['newsletter_token'] ?? '';
 
 
-// Agar cookie nahi hai
+
+// Cookie nahi hai
 
 if(empty($token)){
+
 
     echo json_encode([
         "status" => "none"
     ]);
+
 
     exit;
 
@@ -20,13 +26,15 @@ if(empty($token)){
 
 
 
-// Token check
+
+// Token Check
 
 $stmt = $conn->prepare(
-    "SELECT email, status 
+    "SELECT email,status 
      FROM newslatter 
      WHERE unsubscribe_token=?"
 );
+
 
 
 $stmt->bind_param(
@@ -35,17 +43,22 @@ $stmt->bind_param(
 );
 
 
+
 $stmt->execute();
+
 
 
 $result = $stmt->get_result();
 
 
 
+
 if($result->num_rows > 0){
 
 
+
     $user = $result->fetch_assoc();
+
 
 
     echo json_encode([
@@ -61,17 +74,21 @@ if($result->num_rows > 0){
 }else{
 
 
+
     echo json_encode([
 
         "status" => "none"
 
     ]);
 
+
+
 }
 
 
 
 $stmt->close();
+
 $conn->close();
 
 

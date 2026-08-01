@@ -356,25 +356,87 @@ if (newsletterForm) {
 
 
         
-        // UNSUBSCRIBE
       
+// UNSUBSCRIBE
 
 
-        if(subscribed){
+
+if(subscribed){
 
 
-            newsletterBtn.disabled = true;
+    newsletterBtn.disabled = true;
+
+    newsletterBtn.innerHTML =
+    "Unsubscribing...";
+
+
+
+   fetch(
+"backend/sendUnsubscribeMail.php",
+{
+
+method:"POST",
+
+headers:{
+"Content-Type":
+"application/x-www-form-urlencoded"
+},
+
+body:
+"email=" + encodeURIComponent(email)
+
+})
+.catch(error=>{
+    console.log("Unsubscribe mail error:",error);
+})
+
+
+    .then(response=>response.text())
+
+
+    .then(data=>{
+
+
+        if(data.trim()==="success"){
+
+
+            subscribed = false;
+
+
 
             newsletterBtn.innerHTML =
-            "Unsubscribing...";
+            "Subscribe";
 
 
 
-            fetch("backend/unsubscribe.php",{
+            // Remove red color
 
+            newsletterBtn.style.background =
+            "";
+
+            newsletterBtn.style.color =
+            "";
+
+
+
+            newsletterStatus.innerHTML =
+            "✅ Successfully Unsubscribed!";
+
+            newsletterStatus.style.color =
+            "green";
+
+
+
+            
+            // BACKGROUND UNSUBSCRIBE MAIL
+           
+
+
+            fetch(
+            "backend/sendUnsubscribeMail.php",
+            {
 
                 method:"POST",
-
 
                 headers:{
 
@@ -387,90 +449,83 @@ if (newsletterForm) {
                 body:
                 "email=" + encodeURIComponent(email)
 
-
-            })
-
-
-            .then(response=>response.text())
-
-
-            .then(data=>{
-
-
-                if(data.trim()==="success"){
-
-
-                    subscribed = false;
-
-
-
-                    newsletterBtn.innerHTML =
-                    "Subscribe";
-
-
-
-                    newsletterBtn.style.background =
-                    "";
-
-
-
-                    newsletterStatus.innerHTML =
-                    "✅ Successfully Unsubscribed!";
-
-
-
-                    newsletterStatus.style.color =
-                    "green";
-
-
-                }
-
-                else{
-
-
-                    newsletterStatus.innerHTML =
-                    "❌ Unable to unsubscribe.";
-
-                    newsletterStatus.style.color =
-                    "red";
-
-                }
-
-
-            })
-
-
-            .catch(()=>{
-
-
-                newsletterStatus.innerHTML =
-                "❌ Network Error!";
-
-                newsletterStatus.style.color =
-                "red";
-
-
-            })
-
-
-            .finally(()=>{
-
-
-                newsletterBtn.disabled=false;
-
-
             });
-
-
-
-            return;
 
 
         }
 
 
+      else if(data.trim()==="already_unsubscribed"){
 
 
+    subscribed = false;
+
+
+    newsletterBtn.innerHTML =
+    "Subscribe";
+
+
+    newsletterBtn.style.background =
+    "";
+
+    newsletterBtn.style.color =
+    "";
+
+
+    newsletterStatus.innerHTML =
+    "⚠ You are already unsubscribed.";
+
+
+    newsletterStatus.style.color =
+    "orange";
+
+
+}
+else{
+
+
+    newsletterStatus.innerHTML =
+    "❌ Unable to unsubscribe.";
+
+
+    newsletterStatus.style.color =
+    "red";
+
+
+}
+
+
+    })
+
+
+    .catch(()=>{
+
+
+        newsletterStatus.innerHTML =
+        "❌ Network Error!";
+
+
+        newsletterStatus.style.color =
+        "red";
+
+
+    })
+
+
+    .finally(()=>{
+
+
+        newsletterBtn.disabled = false;
+
+
+    });
+
+
+
+    return;
+
+
+}
         
         // SUBSCRIBE
         
@@ -665,9 +720,9 @@ if (newsletterForm) {
 
 
 }
-// ===============================
+
 // AUTO CHECK EXISTING SUBSCRIBER
-// ===============================
+
 
 window.addEventListener("load", ()=>{
 

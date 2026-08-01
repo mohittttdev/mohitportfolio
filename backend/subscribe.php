@@ -50,14 +50,19 @@ if($result->num_rows > 0){
 
     // Already Active
 
-    if($user['status']=="active"){
+    if($user['status'] == "active"){
 
 
         setcookie(
             "newsletter_token",
             $user['unsubscribe_token'],
-            time() + (86400 * 365),
-            "/"
+            [
+                'expires' => time() + (86400 * 365),
+                'path' => '/',
+                'secure' => false,
+                'httponly' => true,
+                'samesite' => 'Lax'
+            ]
         );
 
 
@@ -68,50 +73,71 @@ if($result->num_rows > 0){
     }
 
 
+
     // Re Subscribe
 
     else{
 
 
+        $newToken = bin2hex(random_bytes(32));
+
+
+
         $update = $conn->prepare(
             "UPDATE newslatter
-             SET status='active'
+             SET status='active',
+                 unsubscribe_token=?
              WHERE email=?"
         );
 
 
+
         $update->bind_param(
-            "s",
+            "ss",
+            $newToken,
             $email
         );
 
 
-        $update->execute();
+
+        if($update->execute()){
 
 
+            setcookie(
+                "newsletter_token",
+                $newToken,
+                [
+                    'expires' => time() + (86400 * 365),
+                    'path' => '/',
+                    'secure' => false,
+                    'httponly' => true,
+                    'samesite' => 'Lax'
+                ]
+            );
 
-        setcookie(
-            "newsletter_token",
-            $user['unsubscribe_token'],
-            time() + (86400 * 365),
-            "/"
-        );
+
+            echo "success";
 
 
-        echo "success";
+        }else{
+
+
+            echo "error";
+
+
+        }
+
 
         exit;
 
     }
 
-
-
 }
 
 
 
-// New Subscriber
 
+// New Subscriber
 
 $token = bin2hex(random_bytes(32));
 
@@ -129,13 +155,9 @@ VALUES(?, 'active', ?)"
 
 
 $stmt->bind_param(
-
-"ss",
-
-$email,
-
-$token
-
+    "ss",
+    $email,
+    $token
 );
 
 
@@ -144,13 +166,16 @@ if($stmt->execute()){
 
 
 
-    // Save Cookie
-
     setcookie(
         "newsletter_token",
         $token,
-        time() + (86400 * 365),
-        "/"
+        [
+            'expires' => time() + (86400 * 365),
+            'path' => '/',
+            'secure' => false,
+            'httponly' => true,
+            'samesite' => 'Lax'
+        ]
     );
 
 
