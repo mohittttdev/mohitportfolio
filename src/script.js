@@ -209,79 +209,108 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ===============================
-  // CONTACT FORM
-  // ===============================
 
-  const contactForm = document.getElementById("contactForm");
-  const formStatus = document.getElementById("formStatus");
 
-  if (contactForm) {
+
+// CONTACT FORM
+
+
+const contactForm = document.getElementById("contactForm");
+const formStatus = document.getElementById("formStatus");
+
+if (contactForm) {
 
     contactForm.addEventListener("submit", function (e) {
 
-      e.preventDefault();
+        e.preventDefault();
 
-      const formData = new FormData(contactForm);
-      const submitBtn = contactForm.querySelector(".contact-btn");
-      const originalBtnHTML = submitBtn.innerHTML;
+        const formData = new FormData(contactForm);
 
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+        const submitBtn = contactForm.querySelector(".contact-btn");
+        const originalBtnHTML = submitBtn.innerHTML;
 
-      fetch(contactForm.action, {
-        method: "POST",
-        body: formData
-      })
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+
+        fetch(contactForm.action, {
+            method: "POST",
+            body: formData
+        })
         .then(response => response.text())
         .then(data => {
 
-          data = data.trim();
+            data = data.trim();
 
-          if (data === "success") {
+            if (data === "success") {
 
-            formStatus.innerHTML = "✅ Message sent successfully!";
-            formStatus.style.color = "green";
+                formStatus.innerHTML = "✅ Message sent successfully!";
+                formStatus.style.color = "green";
 
-            contactForm.reset();
+                // Save values before reset
+                const contactData = new URLSearchParams({
+                    name: formData.get("name"),
+                    email: formData.get("email"),
+                    subject: formData.get("subject"),
+                    message: formData.get("message")
+                });
 
-          } else if (data === "invalid") {
+                contactForm.reset();
 
-            formStatus.innerHTML = "❌ Invalid Email!";
-            formStatus.style.color = "red";
+                
+                // Background Email
+                
+                fetch("backend/sendContactMail.php", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    body: contactData.toString()
+                })
+                .then(res => res.text())
+                .then(result => {
+                    console.log("Mail Status:", result);
+                })
+                .catch(err => {
+                    console.error("Mail Error:", err);
+                });
 
-          } else {
+            } else if (data === "invalid") {
 
-            console.log("Server Response:", data);
+                formStatus.innerHTML = "❌ Invalid Email!";
+                formStatus.style.color = "red";
 
-            formStatus.innerHTML = "❌ Something went wrong.";
-            formStatus.style.color = "red";
+            } else {
 
-          }
+                console.log("Server Response:", data);
+
+                formStatus.innerHTML = "❌ Something went wrong.";
+                formStatus.style.color = "red";
+
+            }
 
         })
         .catch((error) => {
 
-          console.error("Fetch Error:", error);
+            console.error("Fetch Error:", error);
 
-          formStatus.innerHTML = "❌ Network Error!";
-          formStatus.style.color = "red";
+            formStatus.innerHTML = "❌ Network Error!";
+            formStatus.style.color = "red";
 
         })
         .finally(() => {
 
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = originalBtnHTML;
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnHTML;
 
         });
 
     });
 
-  }
+}
 
-  // ===============================
+  
   // NEWSLETTER
-  // ===============================
+  
 
   const newsletterForm = document.getElementById("newsletterForm");
   const newsletterStatus = document.getElementById("newsletterStatus");
@@ -310,9 +339,9 @@ document.addEventListener('DOMContentLoaded', () => {
             newsletterStatus.style.color = "green";
             newsletterForm.reset();
 
-            // ==========================
+            
             // Background Welcome Email
-            // ==========================
+            
             fetch("backend/sendNewsletterMail.php", {
               method: "POST",
               headers: {
