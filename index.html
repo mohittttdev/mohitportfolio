@@ -916,20 +916,38 @@
     </section>
 
     <!-- NEWSLETTER  -->
+
     <section class="newsletter">
+
         <div class="newsletter-box" data-reveal>
-            <span> Stay Connected</span>
+
+            <span>Stay Connected</span>
+
             <h2>Subscribe For Updates</h2>
-            <p>Get notified about my latest projects, blogs and web development updates.</p>
+
+            <p>
+                Get notified about my latest projects,
+                blogs and web development updates.
+            </p>
+
+
             <form class="newsletter-form" id="newsletterForm" action="backend/subscribe.php" method="POST">
-                <input type="email" name="email" placeholder="Enter your email" required>
-                <button type="submit">Subscribe</button>
+
+                <input type="email" name="email" id="newsletterEmail" placeholder="Enter your email"
+                    autocomplete="email" maxlength="150" required>
+
+                <button type="submit" id="newsletterBtn">
+                    Subscribe
+                </button>
+
             </form>
+
 
             <p id="newsletterStatus"></p>
 
 
         </div>
+
     </section>
 
     <!-- FOOTER  -->
