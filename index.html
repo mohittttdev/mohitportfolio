@@ -887,19 +887,20 @@
                 <form action="backend/form.php" method="POST" id="contactForm">
 
                     <div class="input-group">
-                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="text" name="name" placeholder="Your Name" autocomplete="name" required>
                     </div>
 
                     <div class="input-group">
-                        <input type="email" name="email" placeholder="Your Email" required>
+                        <input type="email" name="email" placeholder="Your Email" autocomplete="email" required>
                     </div>
 
                     <div class="input-group">
-                        <input type="text" name="subject" placeholder="Subject" required>
+                        <input type="text" name="subject" placeholder="Subject" autocomplete="off" required>
                     </div>
 
                     <div class="input-group">
-                        <textarea name="message" rows="6" placeholder="Write your message..." required></textarea>
+                        <textarea name="message" rows="6" placeholder="Write your message..." autocomplete="off"
+                            required></textarea>
                     </div>
 
                     <button type="submit" name="submit" class="contact-btn">
@@ -921,9 +922,13 @@
             <h2>Subscribe For Updates</h2>
             <p>Get notified about my latest projects, blogs and web development updates.</p>
             <form class="newsletter-form" id="newsletterForm" action="backend/subscribe.php" method="POST">
-               <input type="email" name="email" placeholder="Enter your email" required>
+                <input type="email" name="email" placeholder="Enter your email" required>
                 <button type="submit">Subscribe</button>
             </form>
+
+            <p id="newsletterStatus"></p>
+
+
         </div>
     </section>
 

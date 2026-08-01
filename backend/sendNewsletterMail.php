@@ -1,70 +1,79 @@
+
+
 <?php
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require '../vendor/autoload.php';
+require __DIR__ . '/vendor/autoload.php';
 
-function sendWelcomeMail($email)
-{
-    $mail = new PHPMailer(true);
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    exit;
+}
 
-    try {
+$email = trim($_POST['email'] ?? '');
 
-        // SMTP Settings
-        $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com';
-        $mail->SMTPAuth = true;
-        $mail->Username = 'mohitttt009@gmail.com';
-        $mail->Password = 'vzqx qhii sssb ogza'; // अपना Gmail App Password डालो
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port = 587;
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    exit("invalid");
+}
 
-        // Sender
-        $mail->setFrom('mohitttt009@gmail.com', 'Mohit Portfolio');
+$mail = new PHPMailer(true);
 
-        // Receiver
-        $mail->addAddress($email);
+try {
 
-        // Email Content
-        $mail->isHTML(true);
-        $mail->Subject = 'Welcome to Mohit Portfolio 🚀';
+    // SMTP
+    $mail->isSMTP();
+    $mail->Host = 'smtp.gmail.com';
+    $mail->SMTPAuth = true;
+    $mail->Username = 'mohitttt009@gmail.com';
+    $mail->Password = 'vzqx qhii sssb ogza'; // <-- App Password
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    $mail->Port = 587;
 
-        $mail->Body = "
-        <div style='font-family:Arial,sans-serif;padding:20px'>
-            <h2>Welcome! 👋</h2>
+    // SMTP ko thoda optimize karo
+    $mail->Timeout = 10;
+    $mail->SMTPKeepAlive = false;
 
-            <p>Thank you for subscribing to my portfolio website.</p>
+    // Sender
+    $mail->setFrom('mohitttt009@gmail.com', 'Mohit Portfolio');
 
-            <p>
-                You'll receive notifications whenever I publish
-                new projects, blogs or major website updates.
-            </p>
+    // Receiver
+    $mail->addAddress($email);
 
-            <br>
+    // Content
+    $mail->isHTML(true);
+    $mail->Subject = 'Welcome to Mohit Portfolio Website';
 
-            <a href='https://yourwebsite.com'
-               style='background:#0d6efd;
-                      color:#fff;
-                      padding:12px 20px;
-                      text-decoration:none;
-                      border-radius:5px;'>
-                Visit Portfolio
-            </a>
+    $mail->Body = "
+    <div style='font-family:Arial,sans-serif;padding:20px'>
+        <h2>Welcome! </h2>
 
-            <br><br>
+        <p>Thank you for subscribing to my portfolio website.</p>
 
-            <p>Thanks ❤️</p>
-            <p><strong>Mohit Sharma</strong></p>
-        </div>
-        ";
+        <p>
+            You'll receive notifications whenever I publish
+            new projects, blogs or major website updates.
+        </p>
 
-        $mail->send();
+        <br>
 
-        return true;
+        <a href='https://yourwebsite.com'
+           style='background:#0d6efd;color:#fff;padding:12px 20px;text-decoration:none;border-radius:5px;'>
+            Visit Portfolio
+        </a>
 
-    } catch (Exception $e) {
+        <br><br>
 
-        return false;
-    }
+        <p>Thanks ❤️</p>
+        <p><strong>Mohit Sharma</strong></p>
+    </div>";
+
+    $mail->send();
+
+    echo "success";
+
+} catch (Exception $e) {
+
+    echo "error";
+
 }

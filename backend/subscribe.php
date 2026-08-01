@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Email Validation
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        die("invalid");
+        exit("invalid");
     }
 
     // Check Duplicate Email
@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $check->get_result();
 
     if ($result->num_rows > 0) {
-        die("exists");
+        exit("exists");
     }
 
     // Generate Token
@@ -28,21 +28,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt = $conn->prepare("INSERT INTO newslatter (email, status, unsubscribe_token) VALUES (?, 'active', ?)");
     $stmt->bind_param("ss", $email, $token);
 
-   if ($stmt->execute()) {
+    if ($stmt->execute()) {
+        echo "success";
+    } else {
+        echo "error";
+    }
 
-    require 'sendNewsletterMail.php';
-
-if (sendWelcomeMail($email)) {
-    echo "success";
-} else {
-    echo "mail_error";
-}
-} else {
-
-    echo "error";
-}
     $stmt->close();
     $check->close();
     $conn->close();
+    exit;
 }
+
+echo "error";
 ?>

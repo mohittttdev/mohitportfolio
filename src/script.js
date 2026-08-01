@@ -209,82 +209,157 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /*  CONTACT FORM */
-  const contactForm = document.getElementById('contactForm');
-  const formStatus = document.getElementById('formStatus');
+  // ===============================
+  // CONTACT FORM
+  // ===============================
+
+  const contactForm = document.getElementById("contactForm");
+  const formStatus = document.getElementById("formStatus");
 
   if (contactForm) {
-    contactForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const action = contactForm.getAttribute('action');
-      const submitBtn = contactForm.querySelector('.contact-btn');
-      const originalBtnHTML = submitBtn.innerHTML;
 
-      // If no real endpoint configured yet, just show a friendly message
-      if (!action || action === '#') {
-        formStatus.textContent = 'Please connect a form endpoint (e.g. Formspree) to enable sending.';
-        formStatus.style.color = '#e0a13c';
-        return;
-      }
+    contactForm.addEventListener("submit", function (e) {
+
+      e.preventDefault();
+
+      const formData = new FormData(contactForm);
+      const submitBtn = contactForm.querySelector(".contact-btn");
+      const originalBtnHTML = submitBtn.innerHTML;
 
       submitBtn.disabled = true;
       submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
-      formStatus.textContent = '';
 
-      try {
-        const formData = new FormData(contactForm);
-        const response = await fetch(action, {
-          method: 'POST',
-          body: formData,
-          headers: { 'Accept': 'application/json' }
+      fetch(contactForm.action, {
+        method: "POST",
+        body: formData
+      })
+        .then(response => response.text())
+        .then(data => {
+
+          data = data.trim();
+
+          if (data === "success") {
+
+            formStatus.innerHTML = "✅ Message sent successfully!";
+            formStatus.style.color = "green";
+
+            contactForm.reset();
+
+          } else if (data === "invalid") {
+
+            formStatus.innerHTML = "❌ Invalid Email!";
+            formStatus.style.color = "red";
+
+          } else {
+
+            console.log("Server Response:", data);
+
+            formStatus.innerHTML = "❌ Something went wrong.";
+            formStatus.style.color = "red";
+
+          }
+
+        })
+        .catch((error) => {
+
+          console.error("Fetch Error:", error);
+
+          formStatus.innerHTML = "❌ Network Error!";
+          formStatus.style.color = "red";
+
+        })
+        .finally(() => {
+
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnHTML;
+
         });
 
-        if (response.ok) {
-          formStatus.textContent = 'Message sent successfully! I\'ll get back to you soon.';
-          formStatus.style.color = '';
-          contactForm.reset();
-        } else {
-          formStatus.textContent = 'Something went wrong. Please try again or email me directly.';
-          formStatus.style.color = '#e05c5c';
-        }
-      } catch (err) {
-        formStatus.textContent = 'Network error. Please try again or email me directly.';
-        formStatus.style.color = '#e05c5c';
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalBtnHTML;
-      }
     });
+
   }
 
-const newsletterForm = document.getElementById('newsletterForm');
+  // ===============================
+  // NEWSLETTER
+  // ===============================
 
-newsletterForm.addEventListener('submit', function(e) {
-    e.preventDefault();
+  const newsletterForm = document.getElementById("newsletterForm");
+  const newsletterStatus = document.getElementById("newsletterStatus");
 
-    const formData = new FormData(newsletterForm);
+  if (newsletterForm) {
 
-    fetch('backend/subscribe.php', {
-        method: 'POST',
+    newsletterForm.addEventListener("submit", function (e) {
+
+      e.preventDefault();
+
+      const formData = new FormData(newsletterForm);
+      const email = formData.get("email");
+
+      fetch(newsletterForm.action, {
+        method: "POST",
         body: formData
-    })
-    .then(response => response.text())
-    .then(data => {
+      })
+        .then(response => response.text())
+        .then(data => {
 
-        const input = newsletterForm.querySelector('input[name="email"]');
+          data = data.trim();
 
-        if (data.trim() === "success") {
-            input.value = "";
-            input.placeholder = "Subscribed! Thank you 🎉";
-        } else if (data.trim() === "exists") {
-            input.value = "";
-            input.placeholder = "Already Subscribed!";
-        } else {
-            alert(data);
-        }
+          if (data === "success") {
+
+            newsletterStatus.innerHTML = "✅ Successfully Subscribed!";
+            newsletterStatus.style.color = "green";
+            newsletterForm.reset();
+
+            // ==========================
+            // Background Welcome Email
+            // ==========================
+            fetch("backend/sendNewsletterMail.php", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+              },
+              body: "email=" + encodeURIComponent(email)
+            })
+              .then(res => res.text())
+              .then(result => {
+                console.log("Mail Status:", result);
+              })
+              .catch(err => {
+                console.error("Mail Error:", err);
+              });
+
+          } else if (data === "exists") {
+
+            newsletterStatus.innerHTML = "⚠ Already Subscribed!";
+            newsletterStatus.style.color = "orange";
+
+          } else if (data === "invalid") {
+
+            newsletterStatus.innerHTML = "❌ Invalid Email!";
+            newsletterStatus.style.color = "red";
+
+          } else {
+
+            console.log("Server Response:", data);
+
+            newsletterStatus.innerHTML = "❌ Something went wrong.";
+            newsletterStatus.style.color = "red";
+
+          }
+
+        })
+        .catch((error) => {
+
+          console.error("Fetch Error:", error);
+
+          newsletterStatus.innerHTML = "❌ Network Error!";
+          newsletterStatus.style.color = "red";
+
+        });
 
     });
-});
+
+  }
 
   /* SMOOTH SCROLL FOR "SCROLL DOWN" INDICATOR  */
   const scrollDown = document.querySelector('.scroll-down');

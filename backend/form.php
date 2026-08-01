@@ -1,4 +1,5 @@
 <?php
+
 include("connection.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -10,47 +11,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Validation
     if (empty($name) || empty($email) || empty($subject) || empty($message)) {
-        die("Please fill all fields.");
+        exit("error");
     }
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        die("Invalid Email Address.");
+        exit("invalid");
     }
 
     $status = "Unread";
 
-    $sql = "INSERT INTO form (name, email, subject, message, status)
-            VALUES (?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare("INSERT INTO form (name, email, subject, message, status)
+                            VALUES (?, ?, ?, ?, ?)");
 
-    $stmt = mysqli_prepare($connection, $sql);
+    $stmt->bind_param(
+        "sssss",
+        $name,
+        $email,
+        $subject,
+        $message,
+        $status
+    );
 
-    if ($stmt) {
+    if ($stmt->execute()) {
 
-        mysqli_stmt_bind_param(
-            $stmt,
-            "sssss",
-            $name,
-            $email,
-            $subject,
-            $message,
-            $status
-        );
-
-        if (mysqli_stmt_execute($stmt)) {
-            echo "Message Sent Successfully";
-        } else {
-            echo "Database Error";
-        }
-
-        mysqli_stmt_close($stmt);
+        echo "success";
 
     } else {
 
-        echo "Query Failed";
+        echo "error";
 
     }
 
-    mysqli_close($connection);
-
+    $stmt->close();
+    $conn->close();
+    exit;
 }
+
+echo "error";
 ?>
