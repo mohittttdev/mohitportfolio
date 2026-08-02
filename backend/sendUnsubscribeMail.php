@@ -9,7 +9,9 @@ use PHPMailer\PHPMailer\Exception;
 
 require __DIR__ . '/vendor/autoload.php';
 
-
+// .env file load karo
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 
 $email = trim($_POST['email'] ?? '');
 
@@ -39,13 +41,8 @@ try{
     $mail->SMTPAuth = true;
 
 
-    $mail->Username =
-    'mohitttt009@gmail.com';
-
-
-    $mail->Password =
-    'vzqx qhii sssb ogza';
-
+  $mail->Username = $_ENV['EMAIL_USER'];
+$mail->Password = $_ENV['EMAIL_PASS'];
 
     $mail->SMTPSecure =
     PHPMailer::ENCRYPTION_STARTTLS;
@@ -56,19 +53,14 @@ try{
 
 
     // Sender
+$mail->setFrom(
+    $_ENV['EMAIL_USER'],
+    'Newsletter System'
+);
 
-    $mail->setFrom(
-        'mohitttt009@gmail.com',
-        'Newsletter System'
-    );
-
-
-    // Only admin mail
-
-    $mail->addAddress(
-        'mohitttt009@gmail.com'
-    );
-
+$mail->addAddress(
+    $_ENV['EMAIL_USER']
+);
 
 
     $mail->isHTML(true);
